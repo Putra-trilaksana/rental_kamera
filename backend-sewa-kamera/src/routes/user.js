@@ -8,4 +8,6 @@ export const router = Router();
 router.post("/register", UserController.register);
 router.post("/login", UserController.login);
 router.post("/logout", isAuthenticated, UserController.logout);
+router.get("/getUser", UserController.getUser);
+router.delete("/deleteUser/:id", UserController.deleteItems);
 

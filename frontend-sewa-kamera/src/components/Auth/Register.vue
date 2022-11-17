@@ -67,24 +67,23 @@
 <template>
     <div class="containe">
         <div class="loginPage d-flex">
-            <img style="width: 600px; height: 700px;" src="../../assets/bg.jpeg" alt="">
-            <div class="p-4 loginItem">
+            <img style="width: 400px; height: 500px;" src="../../assets/bg.jpeg" alt="">
+            <div class="loginItem">
                 <h1 class="d-flex col-12 justify-content-start pb-2">Register</h1>
                 <p class="d-flex col-12 justify-content-start">Pilih Peralatan yang Kamu Suka</p>
-                <form action="" @submit="onSubmit" class="position-absolute col-10 mt-3">
+                <form action="" @submit="onSubmit" class="position-absolute col-8 mt-3">
                     <div>
-                        <div class="m-0 mb-2">
-                            <label for="username_input" class="fs-6 fw-semibold">Username</label>
+                        <div class="m-0 mb-2 col-4">
                             <input 
                                 type="username" 
                                 class="form-control form"
                                 id="username_input"
                                 v-model="username"
                                 placeholder="Username"
+                                style="font-size: 12px; height: 30px;"
                                 />
                         </div>   
-                        <div class="mb-2">
-                            <label for="email_input" class="fs-6 fw-semibold">Email Address</label>
+                        <div class="mb-2 col-4">
                             <input 
                             type="email" 
                             class="form-control form"
@@ -92,49 +91,50 @@
                             aria-describedby="emailHelp"
                             v-model="email"
                             placeholder="Email Address"
+                            style="font-size: 12px; height: 30px;"
                             />
                         </div>
-                        <div class="m-0 mb-2">
-                            <label for="password1_input" class="fs-6 fw-semibold">Password</label>
+                        <div class="m-0 mb-2 col-4">
                             <input 
                                 type="password" 
                                 class="form-control form"
                                 id="password1_input"
                                 v-model="password1"
-                                placeholder="Min. 8 Karakter"
+                                placeholder="Password"
+                                style="font-size: 12px; height: 30px;"
                                 />
                         </div>                        
-                        <div class="m-0 mb-2">
-                            <label for="password2_input" class="fs-6 fw-semibold">Konfirmasi Password</label>
+                        <div class="m-0 mb-2 col-4">
                             <input 
                                 type="password" 
                                 class="form-control form"
                                 id="password2_input"
                                 v-model="password2"
-                                placeholder="Min. 8 Karakter"
+                                placeholder="Konfirmasi Password"
+                                style="font-size: 12px; height: 30px;"
                                 />
                         </div>                        
-                        <div class="m-0 mb-2">
-                            <label for="alamat_input" class="fs-6 fw-semibold">Alamat</label>
+                        <div class="m-0 mb-2 col-4">
                             <input 
                                 type="address" 
                                 class="form-control form"
                                 id="alamat_input"
                                 v-model="alamat"
                                 placeholder="Alamat"
+                                style="font-size: 12px; height: 30px;"
                                 />
                         </div>
-                        <div class="d-flex gap-2">
+                        <div class="d-flex gap-2 col-4">
                             <input id="remember" type="checkbox">
-                            <label for="remember" class="fw-semibold">Accept Terms & Conditions</label>
+                            <label for="remember" class="fw-semibold" style="font-size: 12px;">Accept Terms & Conditions</label>
                         </div> 
                     </div>
-                    <div v-if="error" class="alertPwd mb-2 d-flex" role="alert">
+                    <div v-if="error" class="alertPwd mb-2 d-flex col-4" role="alert">
                         {{error}}
                     </div>
-                    <button class="btn btn-primary col-12 p-2 fw-bold mb-2" type="submit">Register</button>
+                    <button class="btn btn-primary col-4 p-2 fw-bold mb-3" type="submit">Register</button>
                     <div class="register">
-                        <h1>Have an Account?<a href="login"> Login</a></h1>
+                        <h1 style="font-size: 12px;">Have an Account?<a href="login"> Login</a></h1>
                     </div>
                 </form>
             </div>
@@ -177,11 +177,12 @@
 }
 
 .loginItem {
-    width: 600px;
-    height: 700px;
+    width: 400px;
+    height: 500px;
     background: white;
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
+    padding: 40px;
 }
 
 .loginItem h1 {

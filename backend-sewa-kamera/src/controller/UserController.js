@@ -31,7 +31,6 @@ export const register = async (req, res) => {
 			success: true,
 			message: "User successfully registered",
 			data: user,
-			token,
 		})
 
     } catch (error) {
@@ -44,7 +43,6 @@ export const login = async (req, res) => {
     try {
         const {email, password} = req.body;
         console.log(req.body);
-
         if(!email || !password){
             return res.status(400).send("Missing Parameter X");
         };
@@ -80,9 +78,35 @@ export const login = async (req, res) => {
 };
 
 export const logout = async (req, res) => {
-    res.clearCookie('token');
+    res.clearCookie("token");
     return res.json({
         success: true,
         message: "Logged Out"
     });
+};
+
+export const getUser = async (req, res) => {
+    try {
+        const user = await prisma.user.findMany()
+        return res.status(200).json(user);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+
+};
+
+
+export const deleteItems = async (req, res) => {
+    try {
+        const {id} = req.params;
+        const deleteUser = await prisma.user.delete({
+            where: {
+                id: parseInt(id),
+            }
+        });
+
+        return res.status(200).json({message: "User Deleted Successfully"})
+    } catch (error) {
+        res.status(500).json(error);
+    }
 };

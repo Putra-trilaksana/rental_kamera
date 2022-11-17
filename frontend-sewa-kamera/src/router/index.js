@@ -3,18 +3,56 @@ import { createRouter, createWebHistory } from "vue-router";
 const router = createRouter({
   history: createWebHistory(),
   routes: [
+    // {
+    //   path: "/",
+    //   name: "Home",
+    //   component: () => import('../views/Home.vue'),
+    //   beforeEnter: requireAuth,
+    //   children: [
+    //     {
+    //       path: '',
+    //       name: "Main",
+    //       component: () => import('../components/Main.vue')
+    //     }
+    //   ]
+    // },
     {
       path: "/",
-      name: "Home",
-      component: () => import('../views/Home.vue'),
+      name: "Admin",
+      component: () => import("../views/Admin.vue"),
       beforeEnter: requireAuth,
-      children: [
+      children: [{
+        path: '/dashboard',
+        name: "Dashboard",
+        component: () => import("../components/Dashboard.vue"),
+        children: [
         {
-          path: '',
+          path: '/',
           name: "Main",
-          component: () => import('../components/Main.vue')
-        }
+          component: () => import("../components/Dashboard/Carousel.vue")
+        },
+        {
+          path: '/traffic',
+          name: "Traffic",
+          component: () => import("../components/Dashboard/Traffic.vue")
+        },
+        {
+          path: '/productList',
+          name: "ProductList",
+          component: () => import("../components/Dashboard/ProductList.vue")
+        },
+        {
+          path: '/addItem',
+          name: 'AddItem',
+          component: () => import("../components/Dashboard/AddItem.vue")
+        },
+        {
+          path: '/userList',
+          name: 'UserList',
+          component: () => import("../components/Dashboard/UserList.vue")
+        },
       ]
+      }]
     },
     {
       path: "/",
@@ -43,7 +81,7 @@ function requireAuth(to, from, next) {
 
 function preventAuthPage(to, from , next) {
   if (!$cookies.get("token")) next();
-  else next({name: "Home"});
+  else next({name: "Admin"});
 }
 
 export default router;

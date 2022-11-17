@@ -1,8 +1,12 @@
 <script setup>
-    import HeaderVue from './Header.vue';
+    import CarouselVue from './Carousel.vue';
+    import MainPage from './MainContent.vue'
 </script>
 
 <template>
-    <HeaderVue></HeaderVue>
-    <h1>Main Content</h1>
+    <div class="">
+        <!-- Main Content -->
+        <CarouselVue></CarouselVue>
+        <MainPage></MainPage>
+    </div>
 </template>
